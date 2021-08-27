@@ -10,4 +10,14 @@ workflows:
   welcome:
     # Run the welcome/run job in its own container
     jobs:
-      - welcome/run
+      - "python-run"
+jobs:
+  "python-run":
+      docker:
+          - image: circleci/python
+      steps:
+            - checkout
+            - run:
+                name: Run python script
+                command: |
+                    python hello.py
